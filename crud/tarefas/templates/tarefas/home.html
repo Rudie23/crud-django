@@ -1,0 +1,34 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Página Inicial</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie-edge">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <script type="module" src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+</head>
+
+<body>
+<div class="container mt-sm-4">
+    <div class="row">
+        <div class="col-sm-8 offset-sm-2">
+            <h1>Lista de Tarefas</h1>
+            <form action="{% url 'tarefas:home' %}" method="post">
+                {% csrf_token %}
+                <div class="input-group mb-3">
+                    <input name="nome" type="text" class="form-control" placeholder="Escreva a tua tarefa"
+                           aria-label="Escreva a tua tarefa" aria-describedby="basic-addon2">
+                    <button class="btn btn-primary" type="submit" id="button">Salvar</button>
+                </div>
+            </form>
+
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>
