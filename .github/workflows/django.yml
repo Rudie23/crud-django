@@ -33,8 +33,6 @@ jobs:
         pip install -r requirements.txt
     - name: Run flake8
       uses: py-actions/flake8@v2
-      with:
-        checkName: 'flake8_py3'
     - name: Run Tests
       run: |
         pytest
