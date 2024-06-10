@@ -15,13 +15,24 @@ def home(request):
             form.save()
             return HttpResponseRedirect(reverse('tarefas:home'))
         else:
-            tarefas_pendentes = Tarefa.objects.filter(feita=False)
+            tarefas_pendentes = Tarefa.objects.filter(feita=False).all()
+            tarefas_feitas = Tarefa.objects.filter(feita=True).all()
             # Quando dados inválidos, mostrar os erros no HTML page {{ form.name.erros }} e mostrar as tarefas pendents
-            return render(request, 'tarefas/home.html', {'form': form, 'tarefas_pendentes': tarefas_pendentes},
+            return render(request, 'tarefas/home.html',
+                          {
+                              'form': form,
+                              'tarefas_pendentes': tarefas_pendentes,
+                              'tarefas_feitas': tarefas_feitas
+                          },
                           status=400)
     # Para mostrar na página inicial as tarefas pendentes
-    tarefas_pendentes = Tarefa.objects.filter(feita=False)
-    return render(request, 'tarefas/home.html', {'tarefas_pendentes': tarefas_pendentes})
+    tarefas_pendentes = Tarefa.objects.filter(feita=False).all()
+    tarefas_feitas = Tarefa.objects.filter(feita=True).all()
+    return render(request, 'tarefas/home.html',
+                  {
+                      'tarefas_pendentes': tarefas_pendentes,
+                      'tarefas_feitas': tarefas_feitas
+                  })
 
 
 def detalhe(request, tarefa_id):
