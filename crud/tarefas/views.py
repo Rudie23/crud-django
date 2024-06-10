@@ -43,3 +43,9 @@ def detalhe(request, tarefa_id):
         if form.is_valid():
             form.save()
     return HttpResponseRedirect(reverse('tarefas:home'))
+
+
+def apagar(request, tarefa_id):
+    if request.method == 'POST':
+        Tarefa.objects.filter(id=tarefa_id).delete()
+    return HttpResponseRedirect(reverse('tarefas:home'))
