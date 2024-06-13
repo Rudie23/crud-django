@@ -1,4 +1,5 @@
 Django
 pytest-django
 flake8
-
+ipython
+django-extensions
