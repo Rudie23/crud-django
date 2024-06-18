@@ -10,6 +10,10 @@ from crud.tarefas.models import Tarefa
 def home(request):
     """
     Mostra as tarefas pendentes e feitas, e também cria novas tarefas.
+
+
+
+
     """
     if request.method == 'POST':
         form = TarefaNovaForm(request.POST)
