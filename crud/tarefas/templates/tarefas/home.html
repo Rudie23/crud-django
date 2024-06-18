@@ -35,7 +35,7 @@
         <div class="col-sm-8 offset-sm-2">
             <h2>Tarefas Pendentes</h2>
             {% for tarefa in tarefas_pendentes %}
-            <form action="{% url 'tarefas:detalhe' tarefa_id=tarefa.id %}" method="post">
+            <form action="{% url 'tarefas:alterar' tarefa_id=tarefa.id %}" method="post">
                 {% csrf_token %}
                 <div class="input-group mb-sm-1">
                     <input name="nome" type="text" class="form-control"
@@ -69,7 +69,7 @@
                     </div>
             
                     <div class="col-sm-11">
-                        <form action="{% url 'tarefas:detalhe' tarefa_id=tarefa.id %}" method="post">
+                        <form action="{% url 'tarefas:alterar' tarefa_id=tarefa.id %}" method="post">
                         {% csrf_token %}
                             <div class="input-group mb-sm-1">
                                 <input name="nome" type="text" class="form-control"

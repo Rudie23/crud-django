@@ -8,6 +8,9 @@ from crud.tarefas.models import Tarefa
 
 # Create your views here.
 def home(request):
+    """
+    Mostra as tarefas pendentes e feitas, e também cria novas tarefas.
+    """
     if request.method == 'POST':
         form = TarefaNovaForm(request.POST)
         if form.is_valid():
@@ -35,7 +38,10 @@ def home(request):
                   })
 
 
-def detalhe(request, tarefa_id):
+def alterar(request, tarefa_id):
+    """
+    Função altera o status da tarefa para false ou true.
+    """
     if request.method == 'POST':
         tarefa = Tarefa.objects.get(id=tarefa_id)
         # o parametro 'instance' serve para modificar o objeto, neste caso a tarefa pelo id dela mesma
@@ -46,6 +52,9 @@ def detalhe(request, tarefa_id):
 
 
 def apagar(request, tarefa_id):
+    """
+    Deleta uma tarefa feita de acordo com seu id.
+    """
     if request.method == 'POST':
         Tarefa.objects.filter(id=tarefa_id).delete()
     return HttpResponseRedirect(reverse('tarefas:home'))
